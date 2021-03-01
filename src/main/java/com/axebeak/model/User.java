@@ -25,7 +25,7 @@ public class User {
 	
 	public String email;
 	
-	@ManyToMany
-	public Set<Song> shopping_cart;
+	@OneToOne
+	public Cart cart;
 	
 }

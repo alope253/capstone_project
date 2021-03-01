@@ -28,6 +28,6 @@ public class Song {
 	public Set<Album> albums;
 	
 	@ManyToMany
-	public Set<User> shoppers;
+	public Set<Cart> carts;
 
 }
