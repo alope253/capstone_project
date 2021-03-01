@@ -1,9 +1,7 @@
 package com.axebeak.model;
 
 import java.sql.Date;
-
 import javax.persistence.*;
-
 import lombok.Data;
 
 @Entity
@@ -17,11 +15,14 @@ public class Song {
 	public String title;
 	public Date release_date;
 	public float price;
+	public String label;
 	public String description;
 	
+	@ManyToOne
 	public Genre genre;
-	
-	public String artist;
-	public String label;
+	@ManyToOne
+	public Artist artist;
+	@ManyToMany
+	public Album albums;
 
 }

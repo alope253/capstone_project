@@ -5,19 +5,20 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Genre {
+public class Album {
 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public int genre_id;
+	public int album_id;
 	
-	public String genre;
+	public String title;
 	
-	@OneToMany
-	public Song songs;
-	@OneToMany
+	@ManyToMany
 	public Artist artists;
-	@OneToMany
-	public Album albums;
+	@ManyToOne
+	public Genre genre;
+	@ManyToMany
+	public Song songs;
 	
 }

@@ -24,6 +24,6 @@ public class User {
 	public String email;
 	
 	@OneToMany
-	public List<Song> shopping_cart = new ArrayList<>();
+	public Song shopping_cart;
 	
 }
