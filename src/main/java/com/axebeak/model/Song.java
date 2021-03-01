@@ -16,8 +16,7 @@ public class Song {
 	
 	public String title;
 	public Date release_date;
-	public float price;
-	public String label;
+	public double price;
 	public String description;
 	
 	@ManyToMany

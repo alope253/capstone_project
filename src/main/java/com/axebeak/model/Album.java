@@ -1,5 +1,6 @@
 package com.axebeak.model;
 
+import java.sql.Date;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -15,6 +16,8 @@ public class Album {
 	public int album_id;
 	
 	public String title;
+	public Date release_date;
+	public double price;
 	
 	@ManyToMany
 	public Set<Artist> artists;

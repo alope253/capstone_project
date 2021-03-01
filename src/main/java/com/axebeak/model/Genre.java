@@ -13,7 +13,8 @@ public class Genre {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int genre_id;
 	
-	public String genre;
+	public String name;
+	public String description;
 	
 	@ManyToMany
 	public Set<Song> songs;

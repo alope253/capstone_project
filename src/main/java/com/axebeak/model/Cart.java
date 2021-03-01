@@ -13,8 +13,6 @@ public class Cart {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int cart_id;
 	
-	
-	
 	@OneToOne
 	public User user;
 	
@@ -22,6 +20,5 @@ public class Cart {
 	public Set<Song> songs;
 	@ManyToMany
 	public Set<Album> albums;
-	
 
 }

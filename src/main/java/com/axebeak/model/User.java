@@ -1,12 +1,6 @@
 package com.axebeak.model;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
-
 import lombok.Data;
-
-
 import javax.persistence.*;
 
 @Entity

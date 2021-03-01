@@ -7,9 +7,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
+@SuppressWarnings("deprecation")
 @Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
+   
+	@Autowired
     public void configureGlobalSecurity(AuthenticationManagerBuilder auth)
     throws Exception {
         auth.inMemoryAuthentication()
@@ -20,9 +22,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers("/login").permitAll()
-            .antMatchers("/", "/*todo*/**").access("hasRole('USER')").and()
-            .formLogin();
+        http.authorizeRequests().antMatchers("/**").anonymous();
+        
+        //.antMatchers("/login", "/welcome**").permitAll().antMatchers("/").access("hasRole('USER')").and().formLogin();
 
         http.csrf().disable();
         http.headers().frameOptions().disable();
