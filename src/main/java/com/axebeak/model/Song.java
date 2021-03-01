@@ -16,6 +16,8 @@ public class Song {
 	
 	public String title;
 	public Date release_date;
+	public float price;
+	public String description;
 	
 	public Genre genre;
 	
