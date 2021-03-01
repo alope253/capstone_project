@@ -1,6 +1,8 @@
 package com.axebeak.model;
 
 import java.sql.Date;
+import java.util.Set;
+
 import javax.persistence.*;
 import lombok.Data;
 
@@ -19,10 +21,13 @@ public class Song {
 	public String description;
 	
 	@ManyToMany
-	public Genre genre;
+	public Set<Genre> genre;
 	@ManyToOne
 	public Artist artist;
 	@ManyToMany
-	public Album albums;
+	public Set<Album> albums;
+	
+	@ManyToMany
+	public Set<User> shoppers;
 
 }
