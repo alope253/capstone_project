@@ -13,7 +13,7 @@ public class Artist {
 	
 	public String artist_name;
 	
-	@ManyToOne
+	@ManyToMany
 	public Genre genre;
 	@ManyToMany
 	public Album albums;

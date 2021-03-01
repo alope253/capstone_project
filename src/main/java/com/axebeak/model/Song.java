@@ -18,7 +18,7 @@ public class Song {
 	public String label;
 	public String description;
 	
-	@ManyToOne
+	@ManyToMany
 	public Genre genre;
 	@ManyToOne
 	public Artist artist;

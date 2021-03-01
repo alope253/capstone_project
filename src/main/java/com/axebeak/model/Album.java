@@ -16,7 +16,7 @@ public class Album {
 	
 	@ManyToMany
 	public Artist artists;
-	@ManyToOne
+	@ManyToMany
 	public Genre genre;
 	@ManyToMany
 	public Song songs;
