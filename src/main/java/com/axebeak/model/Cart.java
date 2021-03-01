@@ -7,18 +7,21 @@ import lombok.Data;
 
 @Entity
 @Data
-public class Artist {
-
+public class Cart {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public int artist_id;
+	public int cart_id;
 	
-	public String artist_name;
+	
+	
+	@OneToOne
+	public User user;
 	
 	@ManyToMany
-	public Set<Genre> genre;
+	public Set<Song> songs;
 	@ManyToMany
 	public Set<Album> albums;
-	@OneToMany
-	public Set<Song> songs;
+	
+
 }

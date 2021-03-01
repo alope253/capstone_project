@@ -2,6 +2,8 @@ package com.axebeak.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
 import lombok.Data;
 
 
@@ -23,7 +25,7 @@ public class User {
 	
 	public String email;
 	
-	@OneToMany
-	public Song shopping_cart;
+	@OneToOne
+	public Cart cart;
 	
 }
