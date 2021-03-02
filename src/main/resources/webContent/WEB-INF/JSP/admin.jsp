@@ -17,7 +17,7 @@
 	<div>
 		<h4>Manage Content</h4>
 		<ul>
-			<li>Albums</li> <!-- link to album list page -->
+			<li><a href="/list-songs">Albums</a></li> <!-- link to album list page -->
 			<li>Artists</li> <!-- link to artist list page -->
 			<li>Songs</li> <!-- link to song list page -->
 			<li>Genres</li> <!-- link to genre list page -->
