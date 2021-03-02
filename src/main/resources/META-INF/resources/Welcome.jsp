@@ -12,7 +12,7 @@ pageEncoding="ISO-8859-1"%>
 	<div class="panel panel-primary">
 		<div class="panel-heading">Home Page</div>
 		<div class="panel-body">
-			Welcome ${​​name}​​! <a href="/list-todos">Click here</a> to manage your tasks.
+			Welcome User​​! Landing page, you;re stuck and can never leave! Hahahahahahahaaaaa!
 		</div>
 	</div>
 </div>
