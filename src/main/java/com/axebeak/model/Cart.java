@@ -1,7 +1,6 @@
 package com.axebeak.model;
 
 import java.util.Set;
-
 import javax.persistence.*;
 import lombok.Data;
 

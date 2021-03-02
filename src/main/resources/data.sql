@@ -1,3 +1,4 @@
+/*
 INSERT INTO genre(genre_id, name, description) VALUES
 	('1', 'Pop Rock', 'Upbeat variety of rock music'),
 	('2', 'Baroque Pop', 'Rock music with classic music elements'),
@@ -71,6 +72,6 @@ INSERT INTO song(song_id, description, price, release_date, title, artist_artist
 	('48', 'God bless the daylight', '1.00', '2003-10-07', 'We Looked Like Giants', '4'),
 	('49', 'And when I see you', '1.00', '2003-10-07', 'A Lack of Color', '4');
 	
-	
+*/
 	
 	

@@ -18,6 +18,8 @@ public class Order {
 	@ManyToOne
 	public User user;
 	@ManyToMany
-	public Set<Product> products;
+	public Set<Song> songs;
+	@ManyToMany
+	public Set<Album> albums;
 	
 }

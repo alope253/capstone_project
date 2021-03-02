@@ -5,14 +5,15 @@ import java.util.Set;
 import javax.persistence.*;
 import lombok.Data;
 
-
+@Entity
 @Data
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Product {
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+public abstract class Product {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-
+	@GeneratedValue(strategy = GenerationType.TABLE)
+	public int product_id;
+	
 	public String title;
 	public double price;
 	public Date release_date;
@@ -23,5 +24,8 @@ public class Product {
 	
 	@ManyToMany
 	public Set<Cart> cart;
+	
+	@ManyToMany
+	public Set<Order> order;
 	
 }

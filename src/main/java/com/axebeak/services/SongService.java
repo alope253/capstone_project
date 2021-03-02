@@ -2,9 +2,11 @@ package com.axebeak.services;
 
 import com.axebeak.model.Song;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.axebeak.repositories.SongRepository;
 
+@Service
 public class SongService {
 
 	@Autowired 
