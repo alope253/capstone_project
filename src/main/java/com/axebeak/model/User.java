@@ -1,6 +1,9 @@
 package com.axebeak.model;
 
 import lombok.Data;
+
+import java.util.Set;
+
 import javax.persistence.*;
 
 @Entity
@@ -21,5 +24,7 @@ public class User {
 	
 	@OneToOne
 	public Cart cart;
+	@OneToMany
+	public Set<Order> orders;
 	
 }

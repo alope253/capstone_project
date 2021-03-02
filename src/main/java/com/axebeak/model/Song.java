@@ -2,13 +2,13 @@ package com.axebeak.model;
 
 import java.sql.Date;
 import java.util.Set;
-
 import javax.persistence.*;
-import lombok.Data;
+import lombok.*;
 
 @Entity
 @Data
-public class Song {
+@EqualsAndHashCode(callSuper=true)
+public class Song extends Product {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)

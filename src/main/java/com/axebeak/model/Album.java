@@ -5,11 +5,12 @@ import java.util.Set;
 
 import javax.persistence.*;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Entity
 @Data
-public class Album {
-
+@EqualsAndHashCode(callSuper=true)
+public class Album extends Product {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,6 +19,7 @@ public class Album {
 	public String title;
 	public Date release_date;
 	public double price;
+	public String description;
 	
 	@ManyToMany
 	public Set<Artist> artists;
