@@ -12,7 +12,7 @@ pageEncoding="ISO-8859-1"%>
 	<div class="panel panel-primary">
 		<div class="panel-heading">Home Page</div>
 		<div class="panel-body">
-			Welcome User​​! Landing page, you;re stuck and can never leave! Hahahahahahahaaaaa!
+			Welcome! Landing page, will have more links and visuals later!
 		</div>
 	</div>
 </div>

@@ -18,7 +18,5 @@ public class Artist {
 	@ManyToMany
 	public Set<Genre> genre;
 	@ManyToMany
-	public Set<Album> albums;
-	@OneToMany
-	public Set<Song> songs;
+	public Set<Product> products;
 }

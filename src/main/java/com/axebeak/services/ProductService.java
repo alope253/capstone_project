@@ -1,38 +1,36 @@
 package com.axebeak.services;
 
-import com.axebeak.model.Song;
+import com.axebeak.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.axebeak.repositories.SongRepository;
+import com.axebeak.repositories.ProductRepository;
 
 @Service
-public class SongService {
+public class ProductService {
 
 	@Autowired 
-	SongRepository songRepo;
+	ProductRepository productRepo;
 
 
 	//returns entire database of songs
-	public Iterable<Song> getAllSongs(){return songRepo.findAll();}
+	public Iterable<Product> getAllSongs(){return productRepo.findAll();}
 
 	//creates the string currently displayed on shop page
 	public String songsToString(){
 		StringBuilder stringBuilder=new StringBuilder();
-		for(Song song:songRepo.findAll()){
-			stringBuilder.append(song.getTitle());
+		for(Product p:productRepo.findAll()){
+			stringBuilder.append(p.getTitle());
 			stringBuilder.append("\t");
-			stringBuilder.append(song.getRelease_date());
+			stringBuilder.append(p.getRelease_date());
 			stringBuilder.append("\t");
-			stringBuilder.append(song.getArtist());
+			stringBuilder.append(p.getArtists());
 			stringBuilder.append("\t");
-			stringBuilder.append(song.getAlbums());
+			stringBuilder.append(p.getGenre());
 			stringBuilder.append("\t");
-			stringBuilder.append(song.getGenre());
+			stringBuilder.append(p.getDescription());
 			stringBuilder.append("\t");
-			stringBuilder.append(song.getDescription());
-			stringBuilder.append("\t");
-			stringBuilder.append(song.getPrice());
+			stringBuilder.append(p.getPrice());
 			stringBuilder.append("\n");
 
 		}

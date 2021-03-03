@@ -17,10 +17,8 @@ public class Genre {
 	public String description;
 	
 	@ManyToMany
-	public Set<Song> songs;
+	public Set<Product> products;
 	@ManyToMany
 	public Set<Artist> artists;
-	@ManyToMany
-	public Set<Album> albums;
 	
 }

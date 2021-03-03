@@ -1,5 +1,5 @@
 package com.axebeak.controllers;
 
-public class SongController {
+public class ProductController {
 
 }

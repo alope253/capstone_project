@@ -3,9 +3,9 @@ package com.axebeak.controllers;
 
 //add the song/album you want, add it to your cart
 
-import com.axebeak.model.Song;
+import com.axebeak.model.Product;
 import com.axebeak.services.CartService;
-import com.axebeak.services.SongService;
+import com.axebeak.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -20,12 +20,12 @@ public class ShopController {
     CartService cartService;
 
     @Autowired
-    SongService songService;
+    ProductService songService;
 
     @RequestMapping(value = "/shop-page", method = RequestMethod.POST)
-    public String addSong(ModelMap model, @RequestParam Song song, @RequestParam int cart_id){
-        cartService.addSongToCart(cart_id, song);
-        model.put("return-message", song );
+    public String addSong(ModelMap model, @RequestParam Product p, @RequestParam int cart_id){
+        cartService.addProductToCart(cart_id, p);
+        model.put("return-message", p );
         return"shop-page";
     }
 

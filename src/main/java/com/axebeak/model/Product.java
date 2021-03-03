@@ -7,8 +7,7 @@ import lombok.Data;
 
 @Entity
 @Data
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
-public abstract class Product {
+public class Product {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
@@ -18,6 +17,12 @@ public abstract class Product {
 	public double price;
 	public Date release_date;
 	public String description;
+	public PRODUCTTYPE product_type;
+	
+	public enum PRODUCTTYPE {
+		ALBUM,
+		SONG
+	}
 	
 	@ManyToMany
 	public Set<Genre> genre;
@@ -27,5 +32,8 @@ public abstract class Product {
 	
 	@ManyToMany
 	public Set<Order> order;
+	
+	@ManyToMany
+	public Set<Artist> artists;
 	
 }
