@@ -28,7 +28,7 @@ public class Orders {
 	@ManyToOne
 	public Users user;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy = "order")
 	public Set<Product> products = new HashSet<>();
 	
 }

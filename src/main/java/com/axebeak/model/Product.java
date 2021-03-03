@@ -25,10 +25,12 @@ public class Product {
 		SONG
 	}
 	
-	@ManyToMany
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinTable(name = "product_genre", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
 	public Set<Genre> genre = new HashSet<>();
 	
-	@ManyToMany
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinTable(name = "product_order", joinColumns = @JoinColumn(name = "product_id"), inverseJoinColumns = @JoinColumn(name = "order_id"))
 	public Set<Orders> order = new HashSet<>();
 	
 	@ManyToOne

@@ -16,7 +16,8 @@ public class Artist {
 	
 	public String artist_name;
 	
-	@ManyToMany
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+	@JoinTable(name = "artist_genre", joinColumns = @JoinColumn(name = "artist_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
 	public Set<Genre> genre  = new HashSet<>();
 	
 	@OneToMany

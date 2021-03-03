@@ -17,10 +17,10 @@ public class Genre {
 	public String name;
 	public String description;
 	
-	@ManyToMany
+	@ManyToMany(mappedBy="genre")
 	public Set<Product> products = new HashSet<>();
 	
-	@ManyToMany
+	@ManyToMany(mappedBy="genre")
 	public Set<Artist> artists = new HashSet<>();
 	
 }
