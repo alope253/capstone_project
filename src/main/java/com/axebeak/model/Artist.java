@@ -1,5 +1,6 @@
 package com.axebeak.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -11,13 +12,13 @@ public class Artist {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	public int artist_id;
+	public int id;
 	
 	public String artist_name;
 	
 	@ManyToMany
-	public Set<Genre> genre;
+	public Set<Genre> genre  = new HashSet<>();
 	
 	@OneToMany
-	public Set<Product> products;
+	public Set<Product> products = new HashSet<>();
 }

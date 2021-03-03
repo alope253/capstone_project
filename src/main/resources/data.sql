@@ -1,4 +1,9 @@
-/* Adding Genres */
+INSERT INTO users(id, email, first_name, last_name, password, role, username) VALUES
+	('1', 'axebeak@axe.beak', 'axe', 'beak', 'axebeak', '1', 'axebeak'),
+	('2', 'admin@ad.min', 'admin', 'admin', 'admin', '0', 'admin');
+
+/*
+ Adding Genres 
 INSERT INTO genre(genre_id, name, description) VALUES
 	('1', 'Pop Rock', 'Upbeat variety of rock music'),
 	('2', 'Baroque Pop', 'Rock music with classic music elements'),
@@ -9,21 +14,21 @@ INSERT INTO genre(genre_id, name, description) VALUES
 	('7', 'Pop', 'Accessible, commercialized music'),
 	('8','Emo','Rock genre focusing on confessional, emotional lyrics');
 
-/* Adding Artists */
+ Adding Artists 
 INSERT INTO artist(artist_id, artist_name) VALUES
 	('1', 'Panic! At the Disco'),
 	('2', 'J Cole'),
 	('3', 'The Weeknd'),
 	('4', 'Death Cab for Cutie');
 
-/* Adding Albums */
+ Adding Albums 
 INSERT INTO product(product_id, title, price, release_date, description, product_type, artists_artist_id) VALUES
 	('100', 'Death of a Bachelor', '10.99', '2016-01-05', '', '0', '1'),
 	('200', '2014 Forest Hills Drive', '12.99', '2014-12-09', '', '0', '2'),
 	('300', 'After Hours', '12.99', '2020-03-20', '', '0', '3'),
 	('400', 'Transatlanticism', '7.99', '2003-10-07', '', '0', '4');
 
-/* Adding Songs */
+ Adding Songs 
 INSERT INTO product(product_id, description, price, release_date, title, product_type, artists_artist_id) VALUES
 	('1', 'Alright alright', '1.25', '2015-09-29', 'Victorious', '1', '1'),
 	('2', 'Tonight we are victorious', '1.25', '2015-12-31', 'Don''t Threaten Me with a Good Time', '1', '1'),
@@ -74,6 +79,7 @@ INSERT INTO product(product_id, description, price, release_date, title, product
 	('47', 'You were the mother of three girls so sweet', '1.00', '2003-10-07', 'Death of an Interior Decorator', '1', '4'),
 	('48', 'God bless the daylight', '1.00', '2003-10-07', 'We Looked Like Giants', '1', '4'),
 	('49', 'And when I see you', '1.00', '2003-10-07', 'A Lack of Color', '1', '4');
-	
+*/
+
 	
 	

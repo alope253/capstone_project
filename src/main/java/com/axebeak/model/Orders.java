@@ -1,5 +1,6 @@
 package com.axebeak.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -11,20 +12,23 @@ public class Orders {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	int order_id;
+	int id;
 	
 	public OrderStatus order_status;
 	
 	public enum OrderStatus { 
-		RECEIVED, 
-		PROCESSING, 
+		CART,
+		WISHLIST,
+		PLACED, 
+		PROCESSING,
+		OUTBOUND,
 		DELIVERED 
 	}
 	
 	@ManyToOne
-	public User user;
+	public Users user;
 	
 	@ManyToMany
-	public Set<Product> products;
+	public Set<Product> products = new HashSet<>();
 	
 }

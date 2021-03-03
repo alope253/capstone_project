@@ -2,17 +2,18 @@ package com.axebeak.model;
 
 import lombok.Data;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
 
 @Entity
 @Data
-public class User {
+public class Users {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	public int user_id;
+	public int id;
 	
 	public String username;
 	public String password;
@@ -22,10 +23,14 @@ public class User {
 	
 	public String email;
 	
-	@OneToOne
-	public Cart cart;
+	public UserRole role;
+	
+	public enum UserRole{
+		ADMIN,
+		USER
+	}
 	
 	@OneToMany
-	public Set<Orders> orders;
+	public Set<Orders> orders  = new HashSet<>();
 	
 }
