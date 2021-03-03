@@ -1,4 +1,4 @@
-INSERT INTO users(user_id, email, first_name, last_name, password, role, username) VALUES
+INSERT INTO users(id, email, first_name, last_name, password, role, username) VALUES
 	('1', 'axebeak@axe.beak', 'axe', 'beak', 'axebeak', '1', 'axebeak'),
 	('2', 'admin@ad.min', 'admin', 'admin', 'admin', '0', 'admin');
 

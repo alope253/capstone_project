@@ -2,6 +2,7 @@ package com.axebeak.model;
 
 import lombok.Data;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ public class Users {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	public int user_id;
+	public int id;
 	
 	public String username;
 	public String password;
@@ -30,6 +31,6 @@ public class Users {
 	}
 	
 	@OneToMany
-	public Set<Orders> orders;
+	public Set<Orders> orders  = new HashSet<>();
 	
 }

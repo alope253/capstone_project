@@ -1,5 +1,6 @@
 package com.axebeak.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.GeneratedValue;
@@ -17,13 +18,13 @@ public class Cart {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	int cart_id;
+	int id;
 
 	@ManyToOne
 	public Users user;
 	
 	@ManyToMany
-	public Set<Product> products;
+	public Set<Product> products = new HashSet<>();
 	
 	//This class will be removed in favor of Orders. 
 	//Expanding the orderStatus enumerated type in the future will cover for Cart, Wishlist, and Orders

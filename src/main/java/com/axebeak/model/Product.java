@@ -1,6 +1,7 @@
 package com.axebeak.model;
 
 import java.sql.Date;
+import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
 import lombok.Data;
@@ -11,7 +12,7 @@ public class Product {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
-	public int product_id;
+	public int id;
 	
 	public String title;
 	public double price;
@@ -25,10 +26,10 @@ public class Product {
 	}
 	
 	@ManyToMany
-	public Set<Genre> genre;
+	public Set<Genre> genre = new HashSet<>();
 	
 	@ManyToMany
-	public Set<Orders> order;
+	public Set<Orders> order = new HashSet<>();
 	
 	@ManyToOne
 	public Artist artists;
