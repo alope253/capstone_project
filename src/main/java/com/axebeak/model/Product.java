@@ -31,9 +31,9 @@ public class Product {
 	public Set<Cart> cart;
 	
 	@ManyToMany
-	public Set<Order> order;
+	public Set<Orders> order;
 	
-	@ManyToMany
-	public Set<Artist> artists;
+	@ManyToOne
+	public Artist artists;
 	
 }

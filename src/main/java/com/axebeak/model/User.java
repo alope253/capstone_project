@@ -26,6 +26,6 @@ public class User {
 	public Cart cart;
 	
 	@OneToMany
-	public Set<Order> orders;
+	public Set<Orders> orders;
 	
 }

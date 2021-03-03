@@ -17,6 +17,7 @@ public class Artist {
 	
 	@ManyToMany
 	public Set<Genre> genre;
-	@ManyToMany
+	
+	@OneToMany
 	public Set<Product> products;
 }

@@ -18,6 +18,7 @@ public class Genre {
 	
 	@ManyToMany
 	public Set<Product> products;
+	
 	@ManyToMany
 	public Set<Artist> artists;
 	
