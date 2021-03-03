@@ -9,7 +9,7 @@ pageEncoding="ISO-8859-1"%>
 <body>
 
 	<h1>User Register Form</h1>
-	<form action="user_register" method="post">
+	<form action="Registration" method="post">
 	<table style="with: 20%">
 		<tr>
 			<td>First Name</td>
