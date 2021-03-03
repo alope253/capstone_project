@@ -30,7 +30,7 @@ public class Users {
 		USER
 	}
 	
-	@OneToMany
+	@OneToMany(mappedBy="user")
 	public Set<Orders> orders  = new HashSet<>();
 	
 }

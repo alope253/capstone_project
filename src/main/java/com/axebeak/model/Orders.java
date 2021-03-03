@@ -26,6 +26,7 @@ public class Orders {
 	}
 	
 	@ManyToOne
+	@JoinColumn(name="user_id")
 	public Users user;
 	
 	@ManyToMany(mappedBy = "order")

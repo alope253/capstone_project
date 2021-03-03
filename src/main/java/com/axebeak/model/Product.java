@@ -34,6 +34,7 @@ public class Product {
 	public Set<Orders> order = new HashSet<>();
 	
 	@ManyToOne
+	@JoinColumn(name="artist_id")
 	public Artist artists;
 	
 }
