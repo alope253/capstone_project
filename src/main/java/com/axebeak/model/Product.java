@@ -28,9 +28,6 @@ public class Product {
 	public Set<Genre> genre;
 	
 	@ManyToMany
-	public Set<Cart> cart;
-	
-	@ManyToMany
 	public Set<Orders> order;
 	
 	@ManyToOne

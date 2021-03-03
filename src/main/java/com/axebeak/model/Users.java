@@ -8,7 +8,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-public class User {
+public class Users {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,8 +22,12 @@ public class User {
 	
 	public String email;
 	
-	@OneToOne
-	public Cart cart;
+	public UserRole role;
+	
+	public enum UserRole{
+		ADMIN,
+		USER
+	}
 	
 	@OneToMany
 	public Set<Orders> orders;

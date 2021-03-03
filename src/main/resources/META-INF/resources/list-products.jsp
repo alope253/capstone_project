@@ -11,7 +11,7 @@
 </head>
 <body>
 
-	<h1>${user.username}'s Task List</h1>
+	<h1>Product listing</h1>
 	<br />
 
 	<table>
@@ -25,14 +25,15 @@
     	    <th>Genres</th>
 		</tr>
     
-		<c:forEach items="${songs}" var="song">
+		<c:forEach items="${products}" var="product">
 		<tr>
-			<td>${song.title}</td>
-			<td>${song.artist}</td>
-			<td>${song.albums}</td>
+			<td>${product.product_type}</td>
+			<td>${product.title}</td>
+			<td>${product.artist}</td>
 			<td><fmt:formatDate type = "date" value = "${song.release_date}" /></td>
 			<td>${song.description}</td>
 			<td>${song.price}</td>
+			
 			<td>${song.genres}</td>
             
             <td> <a href="/edit-song/${task.id}">Edit</a></td>

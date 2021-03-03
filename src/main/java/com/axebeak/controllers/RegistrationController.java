@@ -5,7 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.view.RedirectView;
-import com.axebeak.model.User;
+import com.axebeak.model.Users;
 import com.axebeak.services.UserService;
 
 
@@ -21,9 +21,9 @@ public class RegistrationController {
     }
 
     @PostMapping("/Registration")
-    public RedirectView postSignUpPage(User user) {
+    public RedirectView postSignUpPage(Users user) {
         userService.addUser(user);
-        return new RedirectView("shop-page.jsp");
+        return new RedirectView("login");
     }
 	
 }

@@ -16,13 +16,16 @@ public class Orders {
 	public OrderStatus order_status;
 	
 	public enum OrderStatus { 
-		RECEIVED, 
-		PROCESSING, 
+		CART,
+		WISHLIST,
+		PLACED, 
+		PROCESSING,
+		OUTBOUND,
 		DELIVERED 
 	}
 	
 	@ManyToOne
-	public User user;
+	public Users user;
 	
 	@ManyToMany
 	public Set<Product> products;
