@@ -8,18 +8,20 @@
      <div class="panel-heading">Store Page</div>
         <div class="panel-body">
            <h1>Songs</h1>
+           ${test}
            ${songs}
 
            <h2>Order Song:</h2>
-            <form action="list" method="post">
+            <form action="shop-page.jsp" method="post">
                 Select a Song:&nbsp;
                 <select name="song">
-                    <c:forEach items="${listSong}" var="song">
+                    <c:forEach items="${productList}" var="song">
                         <option value="${song.id}">${song.name}</option>
                     </c:forEach>
                 </select>
                 <br/><br/>
-                <input type="submit" value="Submit" />
+                <input type="submit" name="action" value="Add-to-cart" />
+                <input type="submit" name="action" value="go-to-cart"/>
                 <h3>Order for ${return-message} submitted</h3>
             </form>
         </div>
