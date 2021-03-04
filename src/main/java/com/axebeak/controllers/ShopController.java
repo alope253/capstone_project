@@ -62,8 +62,10 @@ public class ShopController {
     */
     @RequestMapping(value = "/shop-page.jsp", method = RequestMethod.GET)
     public ModelAndView showAddedSong(){
+    	System.out.println("shop-page get");
+    	System.out.println(getProductList());
         model.addObject( "songs",songService.songsToString());
-        model.addObject("productList", songService.getAllSongs());
+        model.addObject("productList", getProductList());
         model.addObject("test", "test");
 
         return model;
