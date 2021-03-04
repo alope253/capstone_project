@@ -8,14 +8,21 @@ import com.axebeak.model.Users;
 import com.axebeak.services.CartService;
 import com.axebeak.services.ProductService;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Controller
 public class ShopController {
@@ -25,6 +32,8 @@ public class ShopController {
 
     @Autowired
     ProductService songService;
+    
+    ModelAndView model=new ModelAndView("/shop-page.jsp");
 
     @RequestMapping(value = "/shop-page.jsp", method = RequestMethod.POST)
     public String addSong(ModelMap model, @RequestParam Product p, @RequestParam String action){
@@ -45,17 +54,25 @@ public class ShopController {
 
     @RequestMapping(value = "/list-products.jsp", method = RequestMethod.GET)
     public String showCart() {
-    	return"/list-prodcuts.jsp";
+    	return"/list-products.jsp";
     }
     
     @RequestMapping(value = "/shop-page.jsp", method = RequestMethod.GET)
     public String showAddedSong(ModelMap model){
         model.put( "songs",songService.songsToString());
-        model.put("productList", songService.getAllSongs());
+        model.addAttribute("productList", songService.getAllSongs());
         model.put("test", "test");
 
         return "/shop-page.jsp";
     }
 
+    @ModelAttribute("productList")
+    public Map<Integer,String> getProductList(){
+    	Map<Integer, String> productList= new HashMap<Integer,String>();
+    	for(Product product:songService.getAllSongs()) {
+    		productList.put(product.getId(), product.getTitle());
+    	}
+    	return productList;
+    }
 
 }
