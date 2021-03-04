@@ -8,7 +8,9 @@ import com.axebeak.model.Users;
 import com.axebeak.services.CartService;
 import com.axebeak.services.ProductService;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,41 +38,41 @@ public class ShopController {
     ModelAndView model=new ModelAndView("/shop-page.jsp");
 
     @RequestMapping(value = "/shop-page.jsp", method = RequestMethod.POST)
-    public String addSong(ModelMap model, @RequestParam Product p, @RequestParam String action){
+    public ModelAndView addSong(@RequestParam Product p, @RequestParam String action){
         Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
         Users user= (Users)authentication.getPrincipal();
         System.out.println("here");
         if(action.equals("Add-to-cart")) {
-        	cartService.addProductToCart(0, p);
-        	model.put("return-message", p );
-        	model.put("test", "test");
+        	cartService.addProductToCart(0, p); 
+        	model.addObject("return-message", p );
+        	model.addObject("test", "test");
+        	model.addObject("productList", getProductList());
         	System.out.println("add");
-        	return"/shop-page.jsp";
+        	return model;
         }else {
         	System.out.println("done");
-        	return"/list-prodcuts.jsp";
+        	return model;
         }
     }
-
+/*
     @RequestMapping(value = "/list-products.jsp", method = RequestMethod.GET)
     public String showCart() {
     	return"/list-products.jsp";
     }
-    
+    */
     @RequestMapping(value = "/shop-page.jsp", method = RequestMethod.GET)
-    public String showAddedSong(ModelMap model){
-        model.put( "songs",songService.songsToString());
-        model.addAttribute("productList", songService.getAllSongs());
-        model.put("test", "test");
+    public ModelAndView showAddedSong(){
+        model.addObject( "songs",songService.songsToString());
+        model.addObject("productList", songService.getAllSongs());
+        model.addObject("test", "test");
 
-        return "/shop-page.jsp";
+        return model;
     }
 
-    @ModelAttribute("productList")
-    public Map<Integer,String> getProductList(){
-    	Map<Integer, String> productList= new HashMap<Integer,String>();
+    private List<String> getProductList(){
+    	List<String> productList= new ArrayList<String>();
     	for(Product product:songService.getAllSongs()) {
-    		productList.put(product.getId(), product.getTitle());
+    		productList.add(product.getTitle());
     	}
     	return productList;
     }
