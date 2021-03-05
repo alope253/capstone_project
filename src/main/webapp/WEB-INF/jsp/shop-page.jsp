@@ -20,16 +20,27 @@
             <form action="/shop-page" method="post" >
                 Select a Song:&nbsp;
                 <label> Products</label>
-                
-                
-                <select name="product">
-                    <c:forEach items="${productList}" var="product">
-                        <option value="${product.key}"> ${product.value} </option>
+                <input type="submit" name="action" value="go-to-cart"/>
+                <br><br>
+                <select name="song">
+                    <c:forEach items="${songList}" var="song">
+                        <option value="${song.key}"> ${song.value} </option>
                     </c:forEach>
                 </select>
                 <br/><br/>
-                <input type="submit" name="action" value="Add-to-cart" />
-                <input type="submit" name="action" value="go-to-cart"/>
+                <input type="submit" name="action" value="Add-song-to-cart" />
+                <br><br>
+                Select a Song:&nbsp;
+                <label> Products</label>
+                
+                
+                <select name="album">
+                    <c:forEach items="${albumList}" var="album">
+                        <option value="${album.key}"> ${album.value} </option>
+                    </c:forEach>
+                </select>
+                <br/><br/>
+                <input type="submit" name="action" value="Add-album-to-cart" />
             </form>
         </div>
      </div>
