@@ -17,7 +17,7 @@ public class RegistrationController {
 
 	@GetMapping("/Registration")
     public String signUpPage() {
-        return "Registration.jsp";
+        return "Registration";
     }
 
     @PostMapping("/Registration")

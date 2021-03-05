@@ -14,6 +14,17 @@ pageEncoding="ISO-8859-1"%>
 		<div class="panel-body">
 			Welcome! Landing page, will have more links and visuals later!
 		</div>
+		<br />
+		<div>
+		<a href="shop-page"> Would you like to buy a thing? </a><br />
+
+		<a href="/admin"> Admin portal can be found here! </a><br />
+
+		<a href="Registration"> Yo! Register now! </a><br />
+
+		<a href="login"> I already have an account... </a><br />
+		
+		</div>
 	</div>
 </div>
 

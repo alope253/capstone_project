@@ -1,6 +1,6 @@
 INSERT INTO users(id, email, first_name, last_name, password, role, username) VALUES
-	('1', 'axebeak@axe.beak', 'axe', 'beak', 'axebeak', '1', 'axebeak'),
-	('2', 'admin@ad.min', 'admin', 'admin', 'admin', '0', 'admin');
+	('10', 'axebeak@axe.beak', 'axe', 'beak', 'axebeak', '1', 'axebeak'),
+	('11', 'admin@ad.min', 'admin', 'admin', 'admin', '0', 'admin');
 
 
 /* Adding Genres */

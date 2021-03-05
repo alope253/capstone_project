@@ -17,9 +17,8 @@
 	<div>
 		<h4>Manage Content</h4>
 		<ul>
-			<li><a href="/list-songs.jsp">Albums</a></li> <!-- link to album list page -->
+			<li><a href="/product-list">Products</a></li> <!-- link to album list page -->
 			<li>Artists</li> <!-- link to artist list page -->
-			<li>Songs</li> <!-- link to song list page -->
 			<li>Genres</li> <!-- link to genre list page -->
 			<li>Orders</li> <!-- link to order list page -->
 		</ul>
@@ -35,15 +34,16 @@
 	
 	
 	<!-- new pages needed -->
-		<!-- album list -->						<!--  -->
-			<!-- album add/edit -->				<!--  -->
-		<!-- artist list -->					<!--  -->
-			<!-- artist add/edit -->			<!--  -->
-		<!-- song list -->						<!-- Done -->		<!-- Build controller and test these two -->
-			<!-- song add/edit -->				<!-- Done -->		<!-- before moving onto the remaining pages -->
-		<!-- Genre list -->						<!--  -->
-			<!-- genre add/edit -->				<!--  -->
-		<!-- order list -->						<!--  -->
+		<!-- artist list -->						<!--  -->
+			<!-- artist add/edit -->				<!--  -->
+		<!-- song/album list -->						<!-- Done -->		<!-- Build controller and test these two -->
+			<!-- song/album add/edit -->				<!-- Done -->		<!-- before moving onto the remaining pages -->
+		<!-- Genre list -->							<!--  -->
+			<!-- genre add/edit -->					<!--  -->
+		<!-- user list -->							<!--  -->
+			<!-- user edit -->						<!--  -->
+		<!-- order list w/ edit status dropdown-->	<!--  -->
+		
 
 </body>
 </html>
