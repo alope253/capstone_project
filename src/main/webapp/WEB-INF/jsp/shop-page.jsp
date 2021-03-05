@@ -41,6 +41,9 @@
                 </select>
                 <br/><br/>
                 <input type="submit" name="action" value="Add-album-to-cart" />
+                
+                <br><br>
+                Added "${addedItem}" to cart 
             </form>
         </div>
      </div>

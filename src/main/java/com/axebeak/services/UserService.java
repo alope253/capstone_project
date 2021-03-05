@@ -26,6 +26,15 @@ public class UserService {
 		return userRepo.findById(id).get();
 	}
 	
+	public Users getUserByUserName(String name) {
+		for(Users user:userRepo.findAll()) {
+			if(user.getUsername().equals(name)) {
+				return user;
+			}
+		}
+		return null;
+	}
+	
 	public void deleteUser(Users p) {
 		userRepo.delete(p);
 	}

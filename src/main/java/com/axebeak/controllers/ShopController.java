@@ -1,24 +1,27 @@
 package com.axebeak.controllers;
 
 
+import com.axebeak.model.Cart;
+import com.axebeak.model.Orders;
+
 //add the song/album you want, add it to your cart
 
 import com.axebeak.model.Product;
-//import com.axebeak.model.Users;
+import com.axebeak.model.Users;
 import com.axebeak.services.CartService;
+import com.axebeak.services.OrderService;
 import com.axebeak.services.ProductService;
+import com.axebeak.services.UserService;
 
-//import java.util.ArrayList;
 import java.util.HashMap;
-//import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.security.core.Authentication;
-//import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.PathVariable;
+//import org.springframework.ui.ModelMap;
+//import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.ui.*;
 //import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -31,27 +34,30 @@ public class ShopController {
 
     @Autowired
     CartService cartService;
-
     @Autowired
     ProductService productService;
-   
+    @Autowired
+    UserService userService;
+    @Autowired
+    OrderService orderService;
+    
 
     @RequestMapping(value = "/shop-page", method = RequestMethod.POST)
     public ModelAndView addSong(@RequestParam String song, @RequestParam String action, @RequestParam String album){
-        //Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
-        //Users user= (Users)authentication.getPrincipal();
-        System.out.println("here");
+        Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
+        String username= authentication.getName();
+        getCartForUser(username);
         if(action.equals("Add-song-to-cart")) {
-        	cartService.addProductToCart(0,productService.getProductByTitle(song));
+        	cartService.addProductToCart(0,productService.getProductById(Integer.parseInt(song)));
         	ModelAndView model=new ModelAndView("shop-page","songList",getProductList());
         	model.addObject("albumList", getAlbumList());
-        	System.out.println("add");
+        	model.addObject("addedItem", song);
         	return model;
         }else if(action.equals("Add-album-to-cart")) {
-        	cartService.addProductToCart(0,productService.getProductByTitle(song));
+        	cartService.addProductToCart(0,productService.getProductById(Integer.parseInt(album)));
         	ModelAndView model=new ModelAndView("shop-page","songList",getProductList());
         	model.addObject("albumList", getAlbumList());
-        	System.out.println("add");
+        	model.addObject("addedItem", album);
         	return model;
         }else {
         	ModelAndView model=new ModelAndView("cart");
@@ -71,14 +77,6 @@ public class ShopController {
         return model;
     }
 
-   /* @RequestMapping(value = "/remove-from-cart/{id}")
-    public ModelAndView adjustedCart(@PathVariable("id") Integer id) {
-    	
-    	ModelAndView models=new ModelAndView("cart", "item", productService.findAll());
-    	
-    	return models;
-    }
-    */
     
     private Map<String,String> getProductList(){
     	Map<String,String> productList= new HashMap<String,String>();
@@ -97,8 +95,24 @@ public class ShopController {
         return productList;
     }
     
-    //private Iterable<Product> getYourCart(int cart_id){
-    //	
-    //}
+    private Cart createCart() {
+    	Cart cart=new Cart();
+    	cart.setProducts(null);
+    	cart.setUser(userService.getUserById(0));
+    	return cart;
+    }
+    
+    private Orders getCartForUser(String username) {
+    	Users currentUser=userService.getUserByUserName(username);
+    	Orders currentOrder=null;
+    	int userId=currentUser.getId();
+    	for(Orders order:orderService.findAll()) {
+    		if((order.getUser().equals(currentUser))&&(order.getOrder_status().equals("CART"))) {
+    			currentOrder=order;
+    		}
+    	}
+    	return currentOrder;
+    }
+    
 
 }
