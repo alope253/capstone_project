@@ -17,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.security.core.Authentication;
 //import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 //import org.springframework.ui.*;
 //import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,39 +61,24 @@ public class ShopController {
     }
     
     
-    
-    
-    
-    @RequestMapping(value = "/cart", method = RequestMethod.GET)
-    public ModelAndView showCart() {
-    	Iterable<Product> products=productService.findAll();
-    	ModelAndView model = new ModelAndView("cart");
-    	model.addObject("yourCart",products);
-    	return model;
-    }
- 
-    
     @RequestMapping(value = "/shop-page", method = RequestMethod.GET)
     public ModelAndView showAddedSong(){
     	System.out.println("shop-page get");
     	System.out.println(getProductList());
     	ModelAndView model= new ModelAndView("shop-page","songList",getProductList());
     	model.addObject("albumList", getAlbumList());
-       // model.addObject( "songs",productService.songsToString());
-        //model.addObject("productList", getProductList());
-        //model.addObject("test", "test");
 
         return model;
     }
 
-    @RequestMapping(value = "/cart", method = RequestMethod.POST)
-    public ModelAndView adjustedCart() {
+   /* @RequestMapping(value = "/remove-from-cart/{id}")
+    public ModelAndView adjustedCart(@PathVariable("id") Integer id) {
     	
-    	ModelAndView model=new ModelAndView("cart", "item", productService.findAll());
+    	ModelAndView models=new ModelAndView("cart", "item", productService.findAll());
     	
-    	return model;
+    	return models;
     }
-    
+    */
     
     private Map<String,String> getProductList(){
     	Map<String,String> productList= new HashMap<String,String>();
