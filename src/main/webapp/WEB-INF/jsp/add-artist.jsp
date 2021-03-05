@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Add a artist</title>
+    <title>Add an Artist</title>
 
 </head>
 <body>

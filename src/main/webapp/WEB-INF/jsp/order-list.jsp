@@ -7,27 +7,25 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Genre Control</title>
+    <title>Order Control</title>
 </head>
 <body>
-<h1>Genre Control</h1>
+<h1>Order Control</h1>
 <br>
 <table>
     <tr>
-        <th>Name</th>
-        <th>Description</th>
+        <th>Order ID</th>
+        <th>Status</th>
     </tr>
-    <c:forEach items="${genres}" var="gen">
+    <c:forEach items="${orders}" var="ord">
         <tr>
-            <td>${gen.name}</td>
-            <td>${gen.description}</td>
-            <td> <a href="/edit-genre/${gen.id}">Edit</a></td>
-            <td> <a href="/delete-genre/${gen.id}">Delete</a></td>
+            <td>${ord.id}</td>
+            <td>${ord.order_status}</td>
+            <td> <a href="/delete-order/${ord.id}">Delete</a></td>
         </tr>
     </c:forEach>
 </table>
 <br>
-<h4><a href="/add-genre">Add a Genre</a></h4>
 
 
 </body>
