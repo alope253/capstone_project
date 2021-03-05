@@ -17,8 +17,9 @@ public class CartService {
 		if(cartRepo.findById(cart_id).isPresent()) {
 			
 			Cart cart=cartRepo.findById(cart_id).get();
-			Set<Product> products=cart.getProducts();products.add(p);
-			cart.setProducts(products);
+			Set<Product> currentProducts=cart.getProducts();
+			currentProducts.add(p);
+			cart.setProducts(currentProducts);
 			return cart;
 		}
 		return null;

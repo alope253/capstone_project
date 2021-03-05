@@ -32,8 +32,7 @@ public class ShopController {
 
     @Autowired
     ProductService productService;
-    
-    //ModelAndView model=new ModelAndView("/shop-page.jsp");
+   
 
     @RequestMapping(value = "/shop-page", method = RequestMethod.POST)
     public ModelAndView addSong(@RequestParam String song, @RequestParam String action, @RequestParam String album){
@@ -53,17 +52,22 @@ public class ShopController {
         	System.out.println("add");
         	return model;
         }else {
-        	ModelAndView model=new ModelAndView("cart","cartList",cartService.getCart(0));
+        	ModelAndView model=new ModelAndView("cart");
         	System.out.println("done");
         	return model;
         }
     }
     
     
-
+    
+    
+    
     @RequestMapping(value = "/cart", method = RequestMethod.GET)
-    public String showCart() {
-    	return"cart";
+    public ModelAndView showCart() {
+    	Iterable<Product> products=productService.findAll();
+    	ModelAndView model = new ModelAndView("cart");
+    	model.addObject("yourCart",products);
+    	return model;
     }
  
     
@@ -80,6 +84,15 @@ public class ShopController {
         return model;
     }
 
+    @RequestMapping(value = "/cart", method = RequestMethod.POST)
+    public ModelAndView adjustedCart() {
+    	
+    	ModelAndView model=new ModelAndView("cart", "item", productService.findAll());
+    	
+    	return model;
+    }
+    
+    
     private Map<String,String> getProductList(){
     	Map<String,String> productList= new HashMap<String,String>();
     	for(Product product:productService.getAllSongs()) {
@@ -96,5 +109,9 @@ public class ShopController {
         }
         return productList;
     }
+    
+    //private Iterable<Product> getYourCart(int cart_id){
+    //	
+    //}
 
 }

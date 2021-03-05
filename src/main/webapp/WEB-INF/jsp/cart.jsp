@@ -23,16 +23,17 @@
         <th>Description</th>
         <th>Type</th>
     </tr>
-    <c:forEach items="${products}" var="prod">
+    <c:forEach items="${yourCart}" var="item">
         <tr>
-            <td>${prod.title}</td>
-            <td>${prod.price}</td>
-            <td><fmt:formatDate type = "date" value = "${prod.release_date}" /></td>
-            <td>${prod.description}</td>
-            <td>${prod.product_type}</td>
+            <td>${item.title}</td>
+            <td>${item.price}</td>
+            <td><fmt:formatDate type = "date" value = "${item.release_date}" /></td>
+            <td>${item.description}</td>
+            <td>${item.product_type}</td>
             <td> Delete</td>
         </tr>
     </c:forEach>
 </table>
+	<a href="shop-page"> Return to shopping </a><br />
 </body>
 </html>
