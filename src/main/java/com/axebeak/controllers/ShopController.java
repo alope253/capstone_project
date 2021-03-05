@@ -8,23 +8,21 @@ import com.axebeak.model.Users;
 import com.axebeak.services.CartService;
 import com.axebeak.services.ProductService;
 
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
+//import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.core.Authentication;
+//import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
+//import org.springframework.ui.*;
+//import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Controller
 public class ShopController {
@@ -39,7 +37,7 @@ public class ShopController {
 
     @RequestMapping(value = "/shop-page", method = RequestMethod.POST)
     public ModelAndView addSong(@RequestParam String product, @RequestParam String action){
-        Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
+        //Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
         //Users user= (Users)authentication.getPrincipal();
         System.out.println("here");
         if(action.equals("Add-to-cart")) {
