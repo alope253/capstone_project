@@ -33,6 +33,21 @@ public class Orders {
 	@ManyToMany(mappedBy = "order")
 	public Set<Product> products = new HashSet<>();
 	
+	
+	//prevent cascading delete from nuking database
+	@PreRemove
+	public void removeOrderFromRelations() {
+		for (Product p : products) {
+			p.getOrder().remove(this);
+		}
+		this.products=null;
+		
+		user.getOrders().remove(this);
+		this.user=null;
+	}
+	
+	
+	
 	@Override
     public int hashCode() {
         final int prime = 31;

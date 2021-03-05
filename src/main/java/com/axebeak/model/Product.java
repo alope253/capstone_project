@@ -39,6 +39,24 @@ public class Product {
 	@JoinColumn(name="artist_id")
 	public Artist artists;
 	
+	//prevent cascading delete from nuking the database
+	@PreRemove
+	public void removeArtistFromRelations() {
+		for (Genre g : genre) {
+			g.getProducts().remove(this);
+		}
+		this.genre=null;
+		
+		for (Orders o : order) {
+			o.getProducts().remove(this);
+		}
+		this.order=null;
+		
+		artists.getProducts().remove(this);
+		artists = null;
+	}
+	
+	
 	@Override
     public int hashCode() {
         final int prime = 31;
@@ -69,5 +87,5 @@ public class Product {
 		return "Product [id=" + id + ", title=" + title + ", price=" + price + ", release_date=" + release_date
 				+ ", description=" + description + ", product_type=" + product_type + ", artists=" + artists + "]";
 	}
-	
+
 }

@@ -24,6 +24,23 @@ public class Genre {
 	@ManyToMany(mappedBy="genre")
 	public Set<Artist> artists = new HashSet<>();
 	
+	
+	//prevent cascading delete from nuking the database
+	@PreRemove
+	public void removeGenreFromRelations() {
+		for (Product p : products) {
+			p.getGenre().remove(this);
+		}
+		this.products=null;
+		
+		for (Artist a : artists) {
+			a.getGenre().remove(this);
+		}
+		this.artists=null;
+	}
+	
+	
+	
 	@Override
     public int hashCode() {
         final int prime = 31;
