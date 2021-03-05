@@ -74,7 +74,7 @@ public class ShopController {
     private Map<String,String> getProductList(){
     	Map<String,String> productList= new HashMap<String,String>();
     	for(Product product:productService.getAllSongs()) {
-    		productList.put(Integer.toString( product.getId()),product.getTitle());
+    		productList.put(Integer.toString(product.getId()),product.getTitle());
     	}
     	return productList;
     }

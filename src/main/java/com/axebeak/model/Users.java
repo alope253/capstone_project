@@ -1,19 +1,21 @@
 package com.axebeak.model;
 
-import lombok.Data;
-
+import lombok.*;
 import java.util.HashSet;
 import java.util.Set;
-
 import javax.persistence.*;
 
 @Entity
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 public class Users {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-	public int id;
+	public Integer id;
 	
 	public String username;
 	public String password;
