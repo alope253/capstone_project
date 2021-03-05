@@ -36,13 +36,20 @@ public class ShopController {
     //ModelAndView model=new ModelAndView("/shop-page.jsp");
 
     @RequestMapping(value = "/shop-page", method = RequestMethod.POST)
-    public ModelAndView addSong(@RequestParam String product, @RequestParam String action){
+    public ModelAndView addSong(@RequestParam String song, @RequestParam String action, @RequestParam String album){
         //Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
         //Users user= (Users)authentication.getPrincipal();
         System.out.println("here");
-        if(action.equals("Add-to-cart")) {
-        	cartService.addProductToCart(0,productService.getProductByTitle(product));
-        	ModelAndView model=new ModelAndView("shop-page","productList",getProductList());
+        if(action.equals("Add-song-to-cart")) {
+        	cartService.addProductToCart(0,productService.getProductByTitle(song));
+        	ModelAndView model=new ModelAndView("shop-page","songList",getProductList());
+        	model.addObject("albumList", getAlbumList());
+        	System.out.println("add");
+        	return model;
+        }else if(action.equals("Add-album-to-cart")) {
+        	cartService.addProductToCart(0,productService.getProductByTitle(song));
+        	ModelAndView model=new ModelAndView("shop-page","songList",getProductList());
+        	model.addObject("albumList", getAlbumList());
         	System.out.println("add");
         	return model;
         }else {
@@ -64,7 +71,8 @@ public class ShopController {
     public ModelAndView showAddedSong(){
     	System.out.println("shop-page get");
     	System.out.println(getProductList());
-    	ModelAndView model= new ModelAndView("shop-page","productList",getProductList());
+    	ModelAndView model= new ModelAndView("shop-page","songList",getProductList());
+    	model.addObject("albumList", getAlbumList());
        // model.addObject( "songs",productService.songsToString());
         //model.addObject("productList", getProductList());
         //model.addObject("test", "test");
@@ -78,6 +86,15 @@ public class ShopController {
     		productList.put(Integer.toString(product.getId()),product.getTitle());
     	}
     	return productList;
+    }
+
+    
+    private Map<String,String> getAlbumList(){
+        Map<String,String> productList= new HashMap<String,String>();
+        for(Product product:productService.getAllAlbums()) {
+            productList.put(Integer.toString(product.getId()),product.getTitle());
+        }
+        return productList;
     }
 
 }

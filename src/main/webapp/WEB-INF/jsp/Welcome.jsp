@@ -28,6 +28,7 @@ pageEncoding="ISO-8859-1"%>
 	</div>
 </div>
 
+<a href="shop-page"> Want to Shop Now? </a>
 
 </body>
 </html>
