@@ -31,7 +31,7 @@ public class ProductService {
 	
 	public Product addProduct(Product prod) {
         return productRepo.save(prod);
-    }
+	}
 	
 	public void updateProduct(Product prod) {
 		productRepo.save(prod);
