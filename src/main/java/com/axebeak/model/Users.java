@@ -35,4 +35,14 @@ public class Users {
 	@OneToMany(mappedBy="user")
 	public Set<Orders> orders  = new HashSet<>();
 	
+	
+	//prevent cascading delete from nuking the database
+	@PreRemove
+	public void removeArtistFromRelations() {
+		for (Orders o : orders) {
+			o.setUser(null);
+		}
+		this.orders=null;
+	}
+	
 }

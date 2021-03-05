@@ -4,9 +4,6 @@ import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
 
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
-
 import lombok.*;
 
 @Entity
@@ -27,6 +24,20 @@ public class Artist {
 	
 	@OneToMany(mappedBy="artists", cascade=CascadeType.REMOVE)
 	public Set<Product> products = new HashSet<>();
+	
+	//prevent cascading delete from nuking the database
+	@PreRemove
+	public void removeArtistFromRelations() {
+		for (Product p : products) {
+			p.setArtists(null);
+		}
+		this.products=null;
+		
+		for (Genre g : genre) {
+			g.getArtists().remove(this);
+		}
+		this.genre=null;
+	}
 	
 	@Override
     public int hashCode() {
