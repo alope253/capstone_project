@@ -18,9 +18,9 @@
 		<h4>Manage Content</h4>
 		<ul>
 			<li><a href="/product-list">Products</a></li> <!-- link to album list page -->
-			<li>Artists</li> <!-- link to artist list page -->
-			<li>Genres</li> <!-- link to genre list page -->
-			<li>Orders</li> <!-- link to order list page -->
+			<li><a href="/artist-list">Artists</a></li> <!-- link to artist list page -->
+			<li><a href="/genre-list">Genres</a></li> <!-- link to genre list page -->
+			<li><a href="/order-list">Orders</a></li> <!-- link to order list page -->
 		</ul>
 	</div>
 	

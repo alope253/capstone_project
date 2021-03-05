@@ -3,6 +3,10 @@ package com.axebeak.model;
 import java.util.HashSet;
 import java.util.Set;
 import javax.persistence.*;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import lombok.*;
 
 @Entity
@@ -21,7 +25,7 @@ public class Artist {
 	@JoinTable(name = "artist_genre", joinColumns = @JoinColumn(name = "artist_id"), inverseJoinColumns = @JoinColumn(name = "genre_id"))
 	public Set<Genre> genre  = new HashSet<>();
 	
-	@OneToMany(mappedBy="artists")
+	@OneToMany(mappedBy="artists", cascade=CascadeType.REMOVE)
 	public Set<Product> products = new HashSet<>();
 	
 	@Override
