@@ -23,5 +23,12 @@ public class CartService {
 		}
 		return null;
 	}
+	
+	public Cart getCart(int cart_id) {
+		if(cartRepo.findById(cart_id).isPresent()) {
+			return cartRepo.findById(cart_id).get();
+		}
+		return null;
+	}
 
 }
