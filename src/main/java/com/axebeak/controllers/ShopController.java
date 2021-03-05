@@ -33,23 +33,25 @@ public class ShopController {
     CartService cartService;
 
     @Autowired
-    ProductService songService;
+    ProductService productService;
     
-    ModelAndView model=new ModelAndView("/shop-page.jsp");
+    //ModelAndView model=new ModelAndView("/shop-page.jsp");
 
-    @RequestMapping(value = "/shop-page.jsp", method = RequestMethod.POST)
+    @RequestMapping(value = "/shop-page", method = RequestMethod.POST)
     public ModelAndView addSong(@RequestParam Product p, @RequestParam String action){
         Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
         Users user= (Users)authentication.getPrincipal();
         System.out.println("here");
         if(action.equals("Add-to-cart")) {
-        	cartService.addProductToCart(0, p); 
-        	model.addObject("return-message", p );
+        	cartService.addProductToCart(0, p);
+        	ModelAndView model=new ModelAndView("shop-page","p",getProductList());
+        	//model.addObject("return-message", p );
         	model.addObject("test", "test");
         	model.addObject("productList", getProductList());
         	System.out.println("add");
         	return model;
         }else {
+        	ModelAndView model=new ModelAndView("shop-page","p",getProductList());
         	System.out.println("done");
         	return model;
         }
@@ -60,21 +62,22 @@ public class ShopController {
     	return"/list-products.jsp";
     }
     */
-    @RequestMapping(value = "/shop-page.jsp", method = RequestMethod.GET)
+    @RequestMapping(value = "/shop-page", method = RequestMethod.GET)
     public ModelAndView showAddedSong(){
     	System.out.println("shop-page get");
     	System.out.println(getProductList());
-        model.addObject( "songs",songService.songsToString());
+    	ModelAndView model= new ModelAndView("shop-page","productList",getProductList());
+       // model.addObject( "songs",productService.songsToString());
         model.addObject("productList", getProductList());
         model.addObject("test", "test");
 
         return model;
     }
 
-    private List<String> getProductList(){
-    	List<String> productList= new ArrayList<String>();
-    	for(Product product:songService.getAllSongs()) {
-    		productList.add(product.getTitle());
+    private Map<String,String> getProductList(){
+    	Map<String,String> productList= new HashMap<String,String>();
+    	for(Product product:productService.getAllSongs()) {
+    		productList.put(Integer.toString( product.getId()),product.getTitle());
     	}
     	return productList;
     }
