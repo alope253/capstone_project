@@ -25,5 +25,4 @@ public class RegistrationController {
         userService.addUser(user);
         return new RedirectView("login");
     }
-	
 }
