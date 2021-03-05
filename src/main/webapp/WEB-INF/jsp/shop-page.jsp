@@ -15,12 +15,12 @@
            <h1>Songs</h1>
 
 
+			<a href="cart"> go to cart </a><br />
            <h2>Order Song:</h2>
             
             <form action="/shop-page" method="post" >
                 Select a Song:&nbsp;
                 <label> Products</label>
-                <input type="submit" name="action" value="go-to-cart"/>
                 <br><br>
                 <select name="song">
                     <c:forEach items="${songList}" var="song">

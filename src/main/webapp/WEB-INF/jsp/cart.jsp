@@ -30,7 +30,7 @@
             <td><fmt:formatDate type = "date" value = "${item.release_date}" /></td>
             <td>${item.description}</td>
             <td>${item.product_type}</td>
-            <td> Delete</td>
+            <td><a href="/remove-product/${item.id}"> Delete </a></td>
         </tr>
     </c:forEach>
 </table>
