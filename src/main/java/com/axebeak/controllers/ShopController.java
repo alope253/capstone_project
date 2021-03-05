@@ -48,25 +48,28 @@ public class ShopController {
         	System.out.println("add");
         	return model;
         }else {
-        	ModelAndView model=new ModelAndView("shop-page","productList",getProductList());
+        	ModelAndView model=new ModelAndView("cart","cartList",cartService.getCart(0));
         	System.out.println("done");
         	return model;
         }
     }
-/*
-    @RequestMapping(value = "/list-products.jsp", method = RequestMethod.GET)
+    
+    
+
+    @RequestMapping(value = "/cart", method = RequestMethod.GET)
     public String showCart() {
-    	return"/list-products.jsp";
+    	return"cart";
     }
-    */
+ 
+    
     @RequestMapping(value = "/shop-page", method = RequestMethod.GET)
     public ModelAndView showAddedSong(){
     	System.out.println("shop-page get");
     	System.out.println(getProductList());
     	ModelAndView model= new ModelAndView("shop-page","productList",getProductList());
        // model.addObject( "songs",productService.songsToString());
-        model.addObject("productList", getProductList());
-        model.addObject("test", "test");
+        //model.addObject("productList", getProductList());
+        //model.addObject("test", "test");
 
         return model;
     }
