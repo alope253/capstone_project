@@ -15,9 +15,13 @@ public class CartService {
 
 	public Cart addProductToCart(int cart_id, Product p){
 		if(cartRepo.findById(cart_id).isPresent()) {
-
-			return cartRepo.findById(cart_id).get();
-		}else{ return null;}
+			
+			Cart cart=cartRepo.findById(cart_id).get();
+			Set<Product> products=cart.getProducts();products.add(p);
+			cart.setProducts(products);
+			return cart;
+		}
+		return null;
 	}
 
 }

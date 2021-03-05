@@ -38,20 +38,17 @@ public class ShopController {
     //ModelAndView model=new ModelAndView("/shop-page.jsp");
 
     @RequestMapping(value = "/shop-page", method = RequestMethod.POST)
-    public ModelAndView addSong(@RequestParam Product p, @RequestParam String action){
+    public ModelAndView addSong(@RequestParam String product, @RequestParam String action){
         Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
-        Users user= (Users)authentication.getPrincipal();
+        //Users user= (Users)authentication.getPrincipal();
         System.out.println("here");
         if(action.equals("Add-to-cart")) {
-        	cartService.addProductToCart(0, p);
-        	ModelAndView model=new ModelAndView("shop-page","p",getProductList());
-        	//model.addObject("return-message", p );
-        	model.addObject("test", "test");
-        	model.addObject("productList", getProductList());
+        	cartService.addProductToCart(0,productService.getProductByTitle(product));
+        	ModelAndView model=new ModelAndView("shop-page","productList",getProductList());
         	System.out.println("add");
         	return model;
         }else {
-        	ModelAndView model=new ModelAndView("shop-page","p",getProductList());
+        	ModelAndView model=new ModelAndView("shop-page","productList",getProductList());
         	System.out.println("done");
         	return model;
         }
